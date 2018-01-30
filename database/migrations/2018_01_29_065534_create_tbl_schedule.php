@@ -15,9 +15,9 @@ class CreateTblSchedule extends Migration
     {
          Schema::create('schedules', function (Blueprint $table) {
             $table->increments('id');
-            $table->decimal('payment', 5, 2);
-            $table->decimal('principle', 5, 2);
-            $table->decimal('balance', 5, 2);
+            $table->decimal('payment', 10, 2);
+            $table->decimal('principle', 10, 2);
+            $table->decimal('balance', 10, 2);
             $table->datetime('payment_date');            
             $table->integer('loan_id')->unsigned();
             $table->foreign('loan_id')->references('id')->on('loans');

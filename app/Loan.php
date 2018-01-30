@@ -32,7 +32,6 @@ class loan extends Model
         ->select('l.*', 'u.firstname', 'c.loantype')
         ->leftJoin('users as u', 'l.user_id', '=' , 'u.id')
         ->leftJoin('categoryloans as c', 'l.category_id', '=', 'c.id')
-
         ->get();
         return $list_loan;
     }

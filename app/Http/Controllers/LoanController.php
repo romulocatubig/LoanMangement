@@ -14,8 +14,6 @@ class LoanController extends Controller
     public function index()
     {
     	$list_loan = loan::getloan();
-    	// $list_loan = loan::All();
-    	// die(var_dump($list_loan));
         return view('Loan.index', compact('list_loan'));
     }
     public function create()
@@ -32,7 +30,7 @@ class LoanController extends Controller
     	$loan->user_id= $req->user_id;
     	$loan->category_id= $req->cat_id;
     	$loan->save();
-    	$list_loan = loan::All();
-        return view('Loan.index')->with(['list_loan' => $list_loan]);
+    	$list_loan = loan::getloan();
+        return view('Loan.index', compact('list_loan'));
     }
 }
