@@ -1,6 +1,6 @@
 <html>
     <body>
-       <form class="form-horizontal" method="post" action="/User/Create">
+       <form class="form-horizontal" method="post" action="{{url('/User/Create/')}}">
        	{{csrf_field()}}
        <h3>Create User</h3>
 	     <input class="" type="text" name="firstname" placeholder="firstname">

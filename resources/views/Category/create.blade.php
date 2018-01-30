@@ -2,7 +2,7 @@
 
 @section('body')
       <h3>Category Create</h3>
-       <form class="form-horizontal" method="post" action="/Category/Create">
+       <form class="form-horizontal" method="post" action="{{url('/Category/Create/')}}">
        	{{csrf_field()}}
         <h3>Create Category</h3>
 	     <input class="" type="text" name="type" placeholder="Loan Type">

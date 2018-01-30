@@ -1,6 +1,6 @@
 <html>
     <body>
-    	 <form class="form-horizontal" method="post" action="/User/Edit">
+    	 <form class="form-horizontal" method="post" action="{{url('/User/Edit/')}}">
           {{csrf_field()}}
           <h3>Edit User</h3>
           @foreach($list_user as $users)

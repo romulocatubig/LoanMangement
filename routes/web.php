@@ -20,22 +20,14 @@ Route::get('/', function () {
 //User
 Route::get('/User', 'create_usercontroller@index');
 Route::get('/User/Create', 'create_usercontroller@create');
-Route::post('/User/Creates', 'create_usercontroller@creates');
-Route::get('/User/Edit/{id}', function ($id) {
-	$list_user = DB::table('users')->where('id', $id)->get();
-    return view('User.edit')->with(['list_user' => $list_user]);
-});
-Route::post('/User/Edit', 'create_usercontroller@edit');
-Route::get('/User/Delete/{id}', function ($id) {
-	$list_user = DB::table('users')->where('id', $id)->get();
-    return view('User.delete')->with(['list_user' => $list_user]);
-});
-Route::post('/User/Delete', 'create_usercontroller@delete');
+Route::post('/User/Create', 'create_usercontroller@creates');
+Route::get('/User/Edit/{id}', 'create_usercontroller@edit');
+Route::post('/User/Edit', 'create_usercontroller@edits');
+Route::get('/User/Delete/{id}', 'create_usercontroller@delete');
+Route::post('/User/Delete', 'create_usercontroller@deletes');
 //Category
-Route::get('/Category', function () {
-    return view('Category.index', ['name' => 'World']);
-});
-Route::get('/Category/Create', function () {
-    return view('Category.create', ['name' => 'World']);
-});
-Route::post('/Category/Create', 'categorycontroller@create');
+Route::get('/Category', 'categorycontroller@index');
+Route::get('/Category/Create', 'categorycontroller@create');
+Route::post('/Category/Create', 'categorycontroller@creates');
+Route::get('/Category/Edit/{id}', 'categorycontroller@edit');
+Route::post('/Category/Edit', 'categorycontroller@edits');

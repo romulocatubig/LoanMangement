@@ -1,6 +1,6 @@
 <html>
     <body>
-       <form class="form-horizontal" method="post" action="/User/Delete">
+       <form class="form-horizontal" method="post" action="{{url('/User/Delete/')}}">
           {{csrf_field()}}
           <h3>Delete User</h3>
           <h3>Are you sure Delete this</h3>

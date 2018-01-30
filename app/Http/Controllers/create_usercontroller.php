@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use DB;
 
 class create_usercontroller extends Controller
 {
@@ -27,7 +28,12 @@ class create_usercontroller extends Controller
         $list_user = User::All();
         return view('User.index')->with(['list_user' => $list_user]);
     }
-    public function edit(Request $req)
+    public function edit($id)
+    {
+        $list_user = DB::table('users')->where('id', $id)->get();
+        return view('User.edit')->with(['list_user' => $list_user]);
+    }
+    public function edits(Request $req)
     {
         $id = $req->id;
         $user = User::Find($id);
@@ -39,7 +45,12 @@ class create_usercontroller extends Controller
         $list_user = User::All();
         return view('User.index')->with(['list_user' => $list_user]);
     }
-     public function delete(Request $req)
+    public function delete($id)
+    {
+        $list_user = DB::table('users')->where('id', $id)->get();
+        return view('User.delete')->with(['list_user' => $list_user]);
+    }
+     public function deletes(Request $req)
     {
         $id = $req->id;
         $user = User::Find($id);

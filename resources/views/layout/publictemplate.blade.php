@@ -1,6 +1,6 @@
 @extends('layout.htmlwrapper')
 @section('content')
-	<body>
+	<body>	
 		@yield('body')
 	</body>
 

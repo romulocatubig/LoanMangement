@@ -1,14 +1,14 @@
 
-       <form class="form-horizontal" method="post" action="/User/Edit">
+       <form class="form-horizontal" method="post" action="{{url('/Category/Edit/')}}">
           {{csrf_field()}}
           <h3>Edit Categoty</h3>
-          @foreach($list_user as $users)
-          <input class="" type="hidden" name="id" value="{{$users->id}}" placeholder="id">
-          <input class="" type="text" name="firstname" value="{{$users->firstname}}" placeholder="firstname">
-          <input class="" type="text" name="lastname" value="{{$users->lastname}}" placeholder="lastname">
-          <input class="" type="text" name="middlename" value="{{$users->middlename}}" placeholder="middlename">
-          <input class="" type="text" name="address" value="{{$users->Address}}" placeholder="address">
+          @foreach($list_category as $categoryloans)
+          <input class="" type="hidden" name="id" value="{{$categoryloans->id}}" placeholder="id">
+          <input class="" type="text" name="loantype" value="{{$categoryloans->loantype}}">
+          <input class="" type="text" name="interest" value="{{$categoryloans->interest}}" >
+          <input class="" type="text" name="min" value="{{$categoryloans->minimum_loan}}" >
+          <input class="" type="text" name="max" value="{{$categoryloans->maximum_loan}}" >
           <input type="submit" name="btnsubmit" value="Save">
-          <a href="/User">Cancel</a>
+          <a href="{{url('/Category')}}">Cancel</a>
           @endforeach
        </form>
