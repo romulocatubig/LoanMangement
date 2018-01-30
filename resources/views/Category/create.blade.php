@@ -10,5 +10,6 @@
        <input class="" type="text" name="min" placeholder="Minimum">
        <input class="" type="text" name="max" placeholder="maximum">
        <input type="submit" name="btnsubmit" value="submit">
+       <a href="{{url('/Category')}}">Cancel</a>
    	   </form>
 @endsection

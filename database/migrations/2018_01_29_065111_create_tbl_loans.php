@@ -15,7 +15,7 @@ class CreateTblLoans extends Migration
     {
         Schema::create('loans', function (Blueprint $table) {
             $table->increments('id');
-            $table->decimal('loan_amount', 5, 2);
+            $table->decimal('loan_amount', 10, 2);
             $table->datetime('date');
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users');

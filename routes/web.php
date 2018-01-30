@@ -16,7 +16,6 @@
 Route::get('/', function () {
     return view('welcome');
 });
-//['name' => 'World']
 //User
 Route::get('/User', 'create_usercontroller@index');
 Route::get('/User/Create', 'create_usercontroller@create');
@@ -31,3 +30,7 @@ Route::get('/Category/Create', 'categorycontroller@create');
 Route::post('/Category/Create', 'categorycontroller@creates');
 Route::get('/Category/Edit/{id}', 'categorycontroller@edit');
 Route::post('/Category/Edit', 'categorycontroller@edits');
+//Loan
+Route::get('/Loan', 'LoanController@index');
+Route::get('/Loan/Create', 'LoanController@create');
+Route::post('/Loan/Create', 'LoanController@creates');
