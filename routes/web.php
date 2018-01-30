@@ -18,14 +18,9 @@ Route::get('/', function () {
 });
 //['name' => 'World']
 //User
-Route::get('/User', function () {
-	$list_user = User::All();
-    return view('User.index')->with(['list_user' => $list_user]);
-});
-Route::get('/User/Create', function () {
-    return view('User.create', ['name' => 'World']);
-});
-Route::post('/User/Create', 'create_usercontroller@create');
+Route::get('/User', 'create_usercontroller@index');
+Route::get('/User/Create', 'create_usercontroller@create');
+Route::post('/User/Creates', 'create_usercontroller@creates');
 Route::get('/User/Edit/{id}', function ($id) {
 	$list_user = DB::table('users')->where('id', $id)->get();
     return view('User.edit')->with(['list_user' => $list_user]);
