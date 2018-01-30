@@ -19,6 +19,27 @@ class create_usercontroller extends Controller
     	$user->middlename= $req->middlename;
     	$user->address= $req->address;
     	$user->save();
-    	return view('User.index');
+    	$list_user = User::All();
+    return view('User.index')->with(['list_user' => $list_user]);
+    }
+    public function edit(Request $req)
+    {
+        $id = $req->id;
+        $user = User::Find($id);
+        $user->firstname= $req->firstname;
+        $user->lastname= $req->lastname;
+        $user->middlename= $req->middlename;
+        $user->address= $req->address;
+        $user->update();
+      $list_user = User::All();
+    return view('User.index')->with(['list_user' => $list_user]);
+    }
+     public function delete(Request $req)
+    {
+        $id = $req->id;
+        $user = User::Find($id);
+        $user->delete();
+      $list_user = User::All();
+    return view('User.index')->with(['list_user' => $list_user]);
     }
 }

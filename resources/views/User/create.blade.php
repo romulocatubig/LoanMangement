@@ -7,6 +7,7 @@
        <input class="" type="text" name="middlename" placeholder="middlename">
        <input class="" type="text" name="address" placeholder="address">
        <input type="submit" name="btnsubmit" value="submit">
+        <a href="/User">Cancel</a>
    	   </form>
     </body>
 </html>

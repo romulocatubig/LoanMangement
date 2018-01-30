@@ -17,8 +17,8 @@ class CreateCategoryloansTable extends Migration
            $table->increments('id');
            $table->string('loantype');
            $table->integer('interest');
-           $table->decimal('minimum_loan', 5,2);
-           $table->decimal('maximum_loan', 5,2);
+           $table->decimal('minimum_loan', 10,2);
+           $table->decimal('maximum_loan', 10,2);
            $table->timestamps();
         });
     }
