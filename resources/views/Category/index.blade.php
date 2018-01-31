@@ -21,8 +21,8 @@
                         <tr>
                               <td>{{$categoryloans->loantype}}</td>
                               <td>{{$categoryloans->interest}}</td>
-                              <td>{{$categoryloans->minimum_loan}}</td>
-                              <td>{{$categoryloans->maximum_loan}}</td>
+                              <td>{{number_format($categoryloans->minimum_loan,2)}}</td>
+                              <td>{{number_format($categoryloans->maximum_loan,2)}}</td>
                               <td><a class="btn btn-primary" href="{{url('/Category/Edit/'. $categoryloans->id)}}">edit</a></td>
                         </tr>
                         @endforeach

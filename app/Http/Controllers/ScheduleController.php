@@ -6,13 +6,15 @@ use Illuminate\Http\Request;
 use App\Schedule;
 use App\loan;
 use DB;
+use Session;
 
 class ScheduleController extends Controller
 {
     public function index($id)
     {
-    	$list_sched = Schedule::where('loan_id','=',$id)->get();
-        return view('Schedule.index', compact('list_sched'));
+        $list_sched = Schedule::getsched($id);
+        $list_loans = Schedule::getloan($id);
+        return view('Schedule.index', compact('list_sched'), compact('list_loans'));
     }
     public function create($id)
     {
@@ -21,12 +23,16 @@ class ScheduleController extends Controller
     }
     public function creates(Request $req)
     {
-    	$loan = Schedule::where('id', '=', $req->loan_id)->get();
-    	$payment=0;
-    	foreach ($loan as $loans) {
-    		$payment += $loans->principle; 
-    	}
-    	$loans = Schedule::getloan($req->loan_id);
+        $payment=0;
+        $validate=0;
+    	// $loan = Schedule::where('id', '=', $req->loan_id)->get();
+    	$loans = Schedule::getsched($req->loan_id);
+        foreach ($loans as $l) {
+            $payment += $l->principle;
+            $validate = $l->balance;
+        }
+        if($validate >= ($req['payment'] - ($req['payment'] * ($loans[0]->interest / 100))))
+        {
     	$principle = ($req['payment'] - ($req['payment'] * ($loans[0]->interest / 100 )));
     	$balance = (($loans[0]->loan_amount-$payment) - ($req['payment'] - ($req['payment'] * ($loans[0]->interest  / 100))));
     	$sched = new Schedule();
@@ -36,7 +42,14 @@ class ScheduleController extends Controller
     	$sched->balance= $balance;
     	$sched->loan_id= $req->loan_id;
     	$sched->save();
-    	$list_sched = Schedule::All();
-        return view('Schedule.index', compact('list_sched'));
+        return redirect('/Loan');
+        }
+        else
+        {
+            Session::flash('message', 'Your Current Balance is : P');
+            Session::flash('alert', $validate);
+            $list_loans = Schedule::getloan($req->loan_id);
+            return view('Schedule.create', compact('list_loans'));
+        }
     }
 }

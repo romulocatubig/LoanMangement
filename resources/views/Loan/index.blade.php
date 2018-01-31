@@ -20,7 +20,7 @@
                         </tr>
                         @foreach($list_loan as $loans)
                         <tr>
-                              <td>{{$loans->loan_amount}}</td>
+                              <td>{{number_format($loans->loan_amount,2)}}</td>
                               <td>{{$loans->date}}</td>
                               <td>{{$loans->firstname}}</td>
                               <td>{{$loans->loantype}}</td>

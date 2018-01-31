@@ -16,6 +16,7 @@
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/home', 'HomeController@index')->name('home');
 //User
 Route::get('/User', 'create_usercontroller@index');
 Route::get('/User/Create', 'create_usercontroller@create');
@@ -39,5 +40,7 @@ Route::get('/Schedule/{id}', 'ScheduleController@index');
 Route::get('/Schedule/Create/{id}', 'ScheduleController@create');
 Route::post('/Schedule/Create', 'ScheduleController@creates');
 Auth::routes();
+//Charts
+Route::get('/Charts', 'Controller@charts');
 
-Route::get('/home', 'HomeController@index')->name('home');
+

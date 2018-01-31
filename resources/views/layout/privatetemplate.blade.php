@@ -10,6 +10,7 @@
 		   			<li><a href="{{url('/User')}}">User</a></li>
 		   			<li><a href="{{url('/Category')}}">Category</a></li>
 		   			<li><a href="{{url('/Loan')}}">Loan</a></li>
+		   			<li><a href="{{url('/Charts')}}">Charts</a></li>
 		   			</ul>
 		   		</div>
 		   	</div>
