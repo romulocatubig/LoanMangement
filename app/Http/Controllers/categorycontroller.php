@@ -20,13 +20,13 @@ class categorycontroller extends Controller
     public function creates(Request $req)
     {
     	$cat = new categoryloan();
-    	$cat->loantype= $req->type;
+    	$cat->loantype= $req->loantype;
     	$cat->interest= $req->interest;
     	$cat->minimum_loan= $req->min;
     	$cat->maximum_loan= $req->max;
     	$cat->save();
-    	$list_category = categoryloan::All();
-        return view('Category.index')->with(['list_category' => $list_category]);
+        return redirect('/Category');
+        // return view('Category.index')->with(['list_category' => $list_category]);
     }
     public function edit($id)
     {
@@ -41,7 +41,6 @@ class categorycontroller extends Controller
         $cat->minimum_loan= $req->min;
         $cat->maximum_loan= $req->max;
         $cat->update();
-        $list_category = categoryloan::All();
-        return view('Category.index')->with(['list_category' => $list_category]);
+        return redirect('/Category');
     }
 }

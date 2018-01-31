@@ -25,8 +25,7 @@ class create_usercontroller extends Controller
         $user->middlename= $req->middlename;
         $user->address= $req->address;
         $user->save();
-        $list_user = User::All();
-        return view('User.index')->with(['list_user' => $list_user]);
+        return redirect('/User');
     }
     public function edit($id)
     {
@@ -42,8 +41,7 @@ class create_usercontroller extends Controller
         $user->middlename= $req->middlename;
         $user->address= $req->address;
         $user->update();
-        $list_user = User::All();
-        return view('User.index')->with(['list_user' => $list_user]);
+         return redirect('/User');
     }
     public function delete($id)
     {
@@ -55,7 +53,6 @@ class create_usercontroller extends Controller
         $id = $req->id;
         $user = User::Find($id);
         $user->delete();
-        $list_user = User::All();
-        return view('User.index')->with(['list_user' => $list_user]);
+         return redirect('/User');
     }
 }

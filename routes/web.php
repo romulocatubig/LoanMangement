@@ -35,6 +35,9 @@ Route::get('/Loan', 'LoanController@index');
 Route::get('/Loan/Create', 'LoanController@create');
 Route::post('/Loan/Create', 'LoanController@creates');
 //Schedule Payment
-Route::get('/Schedule', 'ScheduleController@index');
+Route::get('/Schedule/{id}', 'ScheduleController@index');
 Route::get('/Schedule/Create/{id}', 'ScheduleController@create');
 Route::post('/Schedule/Create', 'ScheduleController@creates');
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

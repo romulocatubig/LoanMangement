@@ -9,9 +9,9 @@ use DB;
 
 class ScheduleController extends Controller
 {
-    public function index()
+    public function index($id)
     {
-    	$list_sched = Schedule::All();
+    	$list_sched = Schedule::where('loan_id','=',$id)->get();
         return view('Schedule.index', compact('list_sched'));
     }
     public function create($id)
