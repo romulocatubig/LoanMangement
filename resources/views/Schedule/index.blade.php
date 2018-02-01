@@ -26,6 +26,13 @@
                             </div>
                         </div>
                         <div class="form-group">
+                            <label for="id " class="col-md-3 control-label text-right">Daily Payment :</label>
+                            <div class="col-md-8">
+                               <label  class="col-md-8 control-label">{{($schedules->loan_amount + ($schedules->loan_amount * ($schedules->interest / 100)))/(30)}}</label>
+                            </div>
+                        </div>
+                       {{--  )/($schedules->interest / 100) --}}
+                        <div class="form-group">
                             <label for="id " class="col-md-3 control-label text-right">Loan Amount :</label>
                             <div class="col-md-8">
                               <label class="col-md-8 control-label">{{number_format(($schedules->loan_amount), 2)}}</label>
@@ -39,7 +46,7 @@
                         </div><div class="form-group">
                             <label for="id " class="col-md-3 control-label text-right">Start Date Loan :</label>
                             <div class="col-md-8">
-                              <label class="col-md-8 control-label">{{date('F d Y', strtotime($schedules->created_at))}}</label>
+                              <label class="col-md-8 control-label">{{date('F d Y', strtotime($schedules->date))}}</label>
                             </div>
                         </div> 
                     @endforeach

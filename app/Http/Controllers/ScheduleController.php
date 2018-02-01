@@ -25,16 +25,23 @@ class ScheduleController extends Controller
     {
         $payment=0;
         $validate=0;
+        $count=0;
     	// $loan = Schedule::where('id', '=', $req->loan_id)->get();
     	$loans = Schedule::getsched($req->loan_id);
+        $loan = Schedule::getloan($req->loan_id);
         foreach ($loans as $l) {
             $payment += $l->principle;
             $validate = $l->balance;
+            $count++;
         }
-        if($validate >= ($req['payment'] - ($req['payment'] * ($loans[0]->interest / 100))))
+        if($count==0)
         {
-    	$principle = ($req['payment'] - ($req['payment'] * ($loans[0]->interest / 100 )));
-    	$balance = (($loans[0]->loan_amount-$payment) - ($req['payment'] - ($req['payment'] * ($loans[0]->interest  / 100))));
+            $validate = $loan[0]->loan_amount;
+        }
+        if($validate >= ($req['payment'] - ($req['payment'] * ($loan[0]->interest / 100))))
+        {
+    	$principle = ($req['payment'] - ($req['payment'] * ($loan[0]->interest / 100 )));
+    	$balance = (($loan[0]->loan_amount-$payment) - ($req['payment'] - ($req['payment'] * ($loan[0]->interest  / 100))));
     	$sched = new Schedule();
     	$sched->payment= $req->payment;
     	$sched->payment_date = date('Y-m-d H:i:s');

@@ -30,9 +30,9 @@ class Schedule extends Model
     public static function getloan($id)
     {
         $list_loan = DB::table('loans as l')
-        ->select('l.*', 'u.*', 'c.*')
         ->leftJoin('users as u', 'l.user_id', '=' , 'u.id')
         ->leftJoin('categoryloans as c', 'l.category_id', '=', 'c.id')
+        ->select('l.*', 'u.firstname','u.lastname','u.middlename', 'c.loantype', 'c.interest')
         ->where('l.id', '=', $id)
         ->get();
         return $list_loan;
@@ -43,6 +43,7 @@ class Schedule extends Model
             ->leftJoin('loans as l', 's.loan_id', '=' , 'l.id')
             ->leftJoin('users as u', 'l.user_id', '=' , 'u.id')
             ->leftJoin('categoryloans as c', 'l.category_id', '=', 'c.id')
+              ->select('s.*','l.loan_amount', 'u.firstname','u.lastname','u.middlename', 'c.loantype', 'c.interest')
             ->where('l.id', '=', $id)
             ->get();
             

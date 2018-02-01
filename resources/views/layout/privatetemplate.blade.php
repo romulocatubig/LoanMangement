@@ -10,7 +10,14 @@
 		   			<li><a href="{{url('/User')}}">User</a></li>
 		   			<li><a href="{{url('/Category')}}">Category</a></li>
 		   			<li><a href="{{url('/Loan')}}">Loan</a></li>
-		   			<li><a href="{{url('/Charts')}}">Charts</a></li>
+		   			<li class="dropdown">
+		   				<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">Charts</a>
+		   				<ul class="dropdown-menu">
+		   					<li><a href="{{url('/Charts')}}">Loan Line Charts</a></li>
+		   					<li><a href="{{url('/Charts/Payment')}}">Loan Bar Charts</a></li>
+		   					<li><a href="{{url('/Charts/User')}}">User Charts</a></li>
+		   				</ul>
+		   			</li>
 		   			</ul>
 		   		</div>
 		   	</div>

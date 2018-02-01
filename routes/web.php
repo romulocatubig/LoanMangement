@@ -42,5 +42,7 @@ Route::post('/Schedule/Create', 'ScheduleController@creates');
 Auth::routes();
 //Charts
 Route::get('/Charts', 'Controller@charts');
+Route::get('/Charts/Payment', 'Controller@payments');
+Route::get('/Charts/User', 'Controller@users');
 
 
