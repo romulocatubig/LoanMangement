@@ -34,8 +34,8 @@
                                     <a class="btn btn-primary" href="{{url('/Member/Update/'. $members->id)}}">activate</a>
                                   @else
                                    <a class="btn btn-primary" href="{{url('/Member/Edit/'. $members->id)}}">edit</a>
-                                   <a class="btn btn-primary"  href="{{url('/Loan/Create/'. $members->id)}}">Create Loan</a>
                                     <a class="btn btn-danger" href="{{url('/Member/Update/'. $members->id)}}">deactivate</a>
+                                    <a class="btn btn-primary"  href="{{url('/Loan/Create/'. $members->id)}}">loan</a>
                                   @endif
                               </td>
                         </tr>

@@ -49,9 +49,25 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="id " class="col-md-4 control-label">Salary</label>
+                            <label for="id " class="col-md-4 control-label">Position</label>
                             <div class="col-md-6">
-                                   <input class="form-control" type="text" name="salary" placeholder="Salary">
+                               <select class="form-control" name="position">
+                                    <option value="Admin">Admin</option>
+                                    <option value="Collector">Collector</option>
+                               </select>
+                        </select>
+                            </div>
+                        </div>
+                         <div class="form-group">
+                            <label for="id " class="col-md-4 control-label">User Name</label>
+                            <div class="col-md-6">
+                                   <input class="form-control" type="text" name="username" placeholder="username">
+                            </div>
+                        </div>
+                         <div class="form-group">
+                            <label for="id " class="col-md-4 control-label">Password</label>
+                            <div class="col-md-6">
+                                   <input class="form-control" type="password" name="password" placeholder="password">
                             </div>
                         </div>
                         <div class="form-group">

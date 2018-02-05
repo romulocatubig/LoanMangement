@@ -1,4 +1,4 @@
-<?php
+	<?php
 
 /*
 |--------------------------------------------------------------------------
@@ -17,11 +17,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/Login', 'HomeController@index')->name('home');
+Route::post('/Home/Login', 'HomeController@login');
 //User
 Route::get('/User', 'create_usercontroller@index');
+Route::get('/User/Update/{id}', 'create_usercontroller@status');
 Route::get('/User/Create', 'create_usercontroller@create');
-Route::post('/User/Create', 'create_usercontroller@creates');
+Route::post('/User/Create', 'create_usercontroller@create');
 Route::get('/User/Edit/{id}', 'create_usercontroller@edit');
 Route::post('/User/Edit', 'create_usercontroller@edits');
 Route::get('/User/Delete/{id}', 'create_usercontroller@delete');
