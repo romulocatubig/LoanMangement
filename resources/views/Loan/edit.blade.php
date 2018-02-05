@@ -9,7 +9,7 @@
 
                 <div class="panel-body">
                 
-                <form class="form-horizontal" method="post" action="{{url('/Loan/Create/'.$id)}}">
+                <form class="form-horizontal" method="post" action="{{url('/Loan/Edit/'.$id)}}">
                 {{csrf_field()}}
                 <div class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">Change Interest</a>
                 <div class="form-group dropdown-menu">
@@ -28,16 +28,6 @@
                           <label>Maximum :P {{number_format($members->salary * .20,2)}}  </label>
                       </div>
                 </div>
-               {{--  <div class="form-group">
-                    <label for="id " class="col-md-4 control-label">Name</label>
-                      <div class="col-md-6">
-                        <select class="form-control" name="member_id">
-                          @foreach($members as $members)
-                            <option value="{{$members->id}}">{{$members->firstname}} "Min" = {{$members->salary * .10}} "Max" = {{$members->salary * .20}}  </option>
-                          @endforeach
-                        </select>
-                      </div>
-                </div> --}}
  		            <div class="form-group">
                     <label for="id " class="col-md-4 control-label">Loan Type</label>
                       <div class="col-md-6">

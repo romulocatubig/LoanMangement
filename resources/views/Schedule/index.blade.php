@@ -1,14 +1,14 @@
-@extends('layout.privatetemplate')
+@extends('layout.loantemplate')
 
 @section('body')
 <div class="container">
     <div class="row">
-        <div class="col-md-8 col-md-offset-2">
+        <div class="col-md-12">
             <div class="panel panel-default">
                 <div style="background-color: lightblue " class="panel-heading">Payment Index</div>
 
                 <div class="panel-body">
-                 <a class="btn btn-info" href="{{url('/Loan')}}">Back to Loan</a>
+                 <a class="btn btn-info" href="{{url('/Loan/Approved')}}">Back to Loan</a>
                 
                     @foreach($list_loans as $schedules)
                    
@@ -26,16 +26,15 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="id " class="col-md-3 control-label text-right">Daily Payment :</label>
-                            <div class="col-md-8">
-                               <label  class="col-md-8 control-label">{{($schedules->loan_amount + ($schedules->loan_amount * ($schedules->interest / 100)))/(30)}}</label>
-                            </div>
-                        </div>
-                       {{--  )/($schedules->interest / 100) --}}
-                        <div class="form-group">
                             <label for="id " class="col-md-3 control-label text-right">Loan Amount :</label>
                             <div class="col-md-8">
                               <label class="col-md-8 control-label">{{number_format(($schedules->loan_amount), 2)}}</label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="id " class="col-md-3 control-label text-right">Loan Period in years :</label>
+                            <div class="col-md-8">
+                              <label class="col-md-8 control-label">{{($schedules->loan_period)}} yr</label>
                             </div>
                         </div>
                         <div class="form-group">
@@ -43,7 +42,20 @@
                             <div class="col-md-8">
                               <label class="col-md-8 control-label">{{$schedules->interest}} %</label>
                             </div>
-                        </div><div class="form-group">
+                        </div>
+                        <div class="form-group">
+                            <label for="id " class="col-md-3 control-label text-right">Daily Payment :</label>
+                            <div class="col-md-8">
+                               <label  class="col-md-8 control-label">{{number_format(($schedules->loan_amount + ($schedules->loan_amount * ($schedules->interest / 100)))/($schedules->loan_period * 365), 2, '.', '')}}</label>
+                            </div>
+                        </div>
+                         <div class="form-group">
+                            <label for="id " class="col-md-3 control-label text-right">Monthly Payment :</label>
+                            <div class="col-md-8">
+                               <label  class="col-md-8 control-label">{{number_format(($schedules->loan_amount + ($schedules->loan_amount * ($schedules->interest / 100)))/($schedules->loan_period * 12), 2, '.', '')}}</label>
+                            </div>
+                        </div>
+                        <div class="form-group">
                             <label for="id " class="col-md-3 control-label text-right">Start Date Loan :</label>
                             <div class="col-md-8">
                               <label class="col-md-8 control-label">{{date('F d Y', strtotime($schedules->date))}}</label>

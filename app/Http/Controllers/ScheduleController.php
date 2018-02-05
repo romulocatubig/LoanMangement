@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Schedule;
 use App\loan;
+use App\User;
 use DB;
 use Session;
 
@@ -49,7 +50,7 @@ class ScheduleController extends Controller
     	$sched->balance= $balance;
     	$sched->loan_id= $req->loan_id;
     	$sched->save();
-        return redirect('/Loan');
+        return redirect('/Schedule/'.$req->loan_id);
         }
         else
         {
@@ -58,5 +59,21 @@ class ScheduleController extends Controller
             $list_loans = Schedule::getloan($req->loan_id);
             return view('Schedule.create', compact('list_loans'));
         }
+    }
+    public function scheme(Request $req)
+    {
+        if($req->all())
+        {
+            $list_users = User::All();
+            $list_payment = Schedule::schemes($req->user_id, $req->year);
+            return view('Schedule.monthlyscheme', compact('list_payment'), compact('list_users'));
+        }
+        else
+        {
+            $list_users = User::All();
+            $list_payment = Schedule::scheme();
+            return view('Schedule.monthlyscheme', compact('list_payment'), compact('list_users'));
+        }
+       
     }
 }

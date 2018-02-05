@@ -49,6 +49,12 @@
                             </div>
                         </div>
                         <div class="form-group">
+                            <label for="id " class="col-md-4 control-label">Salary</label>
+                            <div class="col-md-6">
+                                   <input class="form-control" type="text" name="salary" placeholder="Salary">
+                            </div>
+                        </div>
+                        <div class="form-group">
                             <div class="col-md-12 navbar-centered">
                                     <input type="submit" name="btnsubmit" value="Create" class="btn btn-primary">
                                     <a class="btn btn-warning" href="{{url('/User')}}">Cancel</a>

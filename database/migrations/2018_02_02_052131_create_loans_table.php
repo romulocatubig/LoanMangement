@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTblLoans extends Migration
+class CreateloansTable extends Migration
 {
     /**
      * Run the migrations.
@@ -17,8 +17,11 @@ class CreateTblLoans extends Migration
             $table->increments('id');
             $table->decimal('loan_amount', 10, 2);
             $table->datetime('date');
-            $table->integer('user_id')->unsigned();
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->integer('interest');
+            $table->integer('loan_period');
+            $table->string('status');
+            $table->integer('member_id')->unsigned();
+            $table->foreign('member_id')->references('id')->on('members');
             $table->integer('category_id')->unsigned();
             $table->foreign('category_id')->references('id')->on('categoryloans');
             $table->timestamps();

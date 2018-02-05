@@ -3,58 +3,78 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\User;
+use App\Member;
 use DB;
 
-class create_usercontroller extends Controller
+class MemberController extends Controller
 {
     public function index()
     {
-    	$list_user = User::All();
-        return view('User.index')->with(['list_user' => $list_user]);
+    	$data = [];
+        $data['list_member'] =  Member::All();
+        return view('Member.index', $data);
     }
     public function create()
     {
-        return view('User.create');
+        return view('Member.create');
     }
     public function creates(Request $req)
     {
-        $user = new User();
+        $user = new Member();
         $user->firstname= $req->firstname;
         $user->lastname= $req->lastname;
         $user->middlename= $req->middlename;
         $user->address= $req->address;
         $user->salary= $req->salary;
+        $user->status= "Active";
+        $user->contact= $req->contact;
         $user->save();
-        return redirect('/User');
+        return redirect('/Member');
     }
     public function edit($id)
     {
-        $list_user = DB::table('users')->where('id', $id)->get();
-        return view('User.edit')->with(['list_user' => $list_user]);
+    	$data = [];
+        $data['list_member']= DB::table('members')->where('id', $id)->get();
+        return view('Member.edit', $data);
     }
     public function edits(Request $req)
     {
         $id = $req->id;
-        $user = User::Find($id);
+        $user = Member::Find($id);
         $user->firstname= $req->firstname;
         $user->lastname= $req->lastname;
         $user->middlename= $req->middlename;
         $user->address= $req->address;
         $user->salary= $req->salary;
+        $user->contact= $req->contact;
         $user->update();
-         return redirect('/User');
+         return redirect('/Member');
+    }
+    public function update(Request $req)
+    {
+        $id = $req->id;
+        $user = Member::Find($id);
+        if($user->status!="Active")
+        {
+        	$user->status= "Active";
+    	}
+    	else
+    	{
+    		$user->status= "Inactive";
+    	}
+        $user->update();
+        return redirect('/Member');
     }
     public function delete($id)
     {
         $list_user = DB::table('users')->where('id', $id)->get();
-        return view('User.delete')->with(['list_user' => $list_user]);
+        return view('Member.delete')->with(['list_user' => $list_user]);
     }
      public function deletes(Request $req)
     {
         $id = $req->id;
         $user = User::Find($id);
         $user->delete();
-         return redirect('/User');
+         return redirect('/Member');
     }
 }

@@ -15,7 +15,7 @@ class loan extends Model
      * @var array
      */
     protected $fillable = [
-        'loan_amount', 'date', 'user_id', 'category_id',
+        'loan_amount', 'date','interest','loan_period','status', 'member_id', 'category_id'
     ];
 
     /**
@@ -29,8 +29,8 @@ class loan extends Model
     public static function getloan()
     {
         $list_loan = DB::table('loans as l')
-        ->select('l.*', 'u.firstname', 'c.loantype')
-        ->leftJoin('users as u', 'l.user_id', '=' , 'u.id')
+        ->select('l.*', 'u.firstname', 'c.loantype', 'c.maximum_loan' , 'c.minimum_loan')
+        ->leftJoin('members as u', 'l.member_id', '=' , 'u.id')
         ->leftJoin('categoryloans as c', 'l.category_id', '=', 'c.id')
         ->get();
         return $list_loan;

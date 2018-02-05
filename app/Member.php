@@ -6,16 +6,17 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\Model;
 
-class categoryloan extends Model
+class Member extends Model
 {
     use Notifiable;
+
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
-        'loantype', 'interest', 'minimum_loan', 'maximum_loan', 'status'
+        'firstname', 'lastname', 'middlename', 'address', 'contact', 'status', 'salary'
     ];
 
     /**

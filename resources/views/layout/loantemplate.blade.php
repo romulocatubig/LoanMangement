@@ -12,7 +12,8 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <div class="collapse navbar-collapse" id="app-navbar-collapse">
+
+                <div class="collapse navbar-collapse" id="app-navbar-collapse">
 		   			<ul class="nav navbar-nav navbar-header">
 		   			<li><a href="{{url('/User')}}">Users</a></li>
 		   			<li><a href="{{url('/Member')}}">Members</a></li>
@@ -31,7 +32,22 @@
 		   		</div>
 		   		</div>
 		   	</div>
-		 </nav>		
+		 </nav>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+		  <div class="panel-heading">
+		  	<ul class="nav navbar-nav navbar-header">
+		  		{{-- <li><a href="{{url('/Loan/Create')}}">Create New Loan</a></li> --}}
+		   		<li><a href="{{url('/Loan')}}">Pending / Cancel</a></li>
+		   		<li><a href="{{url('/Loan/Approved')}}">Approved</a></li>
+		   		<li><a href="{{url('/Loan/Paid')}}">Paid</a></li>
+				<li><a href="{{url('/Loan/Rejected')}}">Rejected</a></li>
+		   	</ul>
+		  </div>
+		</div>
+	</div>
+</div>		
 		@yield('body')
 	</body>
  <script src="{{ asset('js/app.js') }}"></script>

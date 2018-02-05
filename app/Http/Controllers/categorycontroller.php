@@ -24,6 +24,7 @@ class categorycontroller extends Controller
     	$cat->interest= $req->interest;
     	$cat->minimum_loan= $req->min;
     	$cat->maximum_loan= $req->max;
+        $cat->status="Enable";
     	$cat->save();
         return redirect('/Category');
         // return view('Category.index')->with(['list_category' => $list_category]);
@@ -40,6 +41,20 @@ class categorycontroller extends Controller
         $cat->interest= $req->interest;
         $cat->minimum_loan= $req->min;
         $cat->maximum_loan= $req->max;
+        $cat->update();
+        return redirect('/Category');
+    }
+    public function update(Request $req)
+    {
+        $cat = categoryloan::Find($req->id);
+        if($cat->status!="Enable")
+        {
+            $cat->status= "Enable";
+        }
+        else
+        {
+            $cat->status= "Disable";
+        }
         $cat->update();
         return redirect('/Category');
     }

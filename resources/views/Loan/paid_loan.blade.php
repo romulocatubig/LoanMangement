@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-md-12">
             <div class="panel panel-default">
-                <div style="background-color: lightblue " class="panel-heading">Pending Loan</div>
+                <div style="background-color: lightblue " class="panel-heading">Paid Loan</div>
 
                 <div class="panel-body">
                   <table class="table">
@@ -17,12 +17,11 @@
                               <td>Loan Period(months)</td>
                               <td>Interest</td>
                               <td>Status</td>
-                              <td>Amortazition</td>
                               <td>Action</td>
                         </tr>
                         @foreach($list_loan as $loans)
                         <tr>
-                          @if($loans->status=="Pending" or $loans->status=="Cancelled")
+                          @if($loans->status=="Paid")
                               <td>{{number_format($loans->loan_amount,2)}}</td>
                               <td>{{$loans->date}}</td>
                               <td>{{$loans->firstname}}</td>
@@ -31,17 +30,9 @@
                               <td>{{$loans->interest}} %</td>
                               <td>{{$loans->status}}</td>
                               <td>
-                                <a class="btn btn-info" href="{{url('/Loan/Amortization/' .$loans->id)}}">Show</a>
-                              </td>
-                              <td>
-                                 @if($loans->status!="Cancelled")
-                                    <a class="btn btn-primary" href="{{url('/Loan/Approved/' .$loans->id)}}">Approve</a>
-                                    <a class="btn btn-warning" href="{{url('/Loan/Cancelled/' .$loans->id)}}">Cancel</a>
-                                    <a class="btn btn-danger" href="{{url('/Loan/Rejected/' .$loans->id)}}">Reject</a>
-                                  @else
-                                    <a class="btn btn-warning" href="{{url('/Loan/Uncancelled/' .$loans->id)}}">uncancelled</a>
-                                    <a class="btn btn-danger" href="{{url('/Loan/Rejected/' .$loans->id)}}">Reject</a>
-                                  @endif
+                                    <a class="btn btn-primary" href="#">Approve</a>
+                                    <a class="btn btn-warning" href="#">Cancel</a>
+                                    <a class="btn btn-danger" href="#">Reject</a>
                               </td>
                            @endif
                         </tr>
@@ -53,5 +44,4 @@
     </div>
 </div>
 @endsection
-
 

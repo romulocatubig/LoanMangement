@@ -16,6 +16,7 @@
                               <th>Middle Name</th>
                               <th>Address</th>
                               <th>Action</th>
+                              <th>Salary</th>
                         </tr>
                   @foreach($list_user as $users)
                         <tr>
@@ -23,6 +24,7 @@
                               <td>{{$users->lastname}}</td>
                               <td>{{$users->middlename}}</td>
                               <td>{{$users->Address}}</td>
+                              <td>{{$users->salary}}</td>
                               <td><a class="btn btn-primary" href="{{url('/User/Edit/'. $users->id)}}">edit</a> <a class="btn btn-danger" href="{{url('/User/Delete/'. $users->id)}}">delete</a></td>
                         </tr>
                   @endforeach
