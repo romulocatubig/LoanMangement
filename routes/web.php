@@ -46,12 +46,16 @@ Route::get('/Category/Update/{id}', 'categorycontroller@update');
 //Loan
 Route::get('/Loan', 'LoanController@index');
 Route::get('/Loan/Approved', 'LoanController@approved_loan');
+Route::get('/Loan/Start', 'LoanController@start_payment');
 Route::get('/Loan/Paid', 'LoanController@paid_loan');
 Route::get('/Loan/Rejected', 'LoanController@rejected_loan');
 Route::get('/Loan/Create/{id}', 'LoanController@create');
 Route::post('/Loan/Create/{id}', 'LoanController@create');
+Route::get('/Loan/Edit/{id}', 'LoanController@edit');
+Route::post('/Loan/Edit/{id}', 'LoanController@edit');
 Route::post('/Loan/Create', 'LoanController@create');
 Route::get('/Loan/Approved/{id}', 'LoanController@approved');
+Route::get('/Loan/Started/{id}', 'LoanController@start');
 Route::get('/Loan/Rejected/{id}', 'LoanController@rejected');
 Route::get('/Loan/Cancelled/{id}', 'LoanController@cancelled');
 Route::get('/Loan/Uncancelled/{id}', 'LoanController@uncancelled');

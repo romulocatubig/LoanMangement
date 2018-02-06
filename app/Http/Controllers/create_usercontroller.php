@@ -8,6 +8,10 @@ use DB;
 
 class create_usercontroller extends Controller
 {
+    // public function __construct()
+    // {
+    //     $this->middleware('auth');
+    // }
     public function index()
     {
     	$data['list_user'] = User::All();
@@ -36,7 +40,7 @@ class create_usercontroller extends Controller
     }
     public function edit($id)
     {
-        $data['$list_user'] = DB::table('users')->where('id', $id)->get();
+        $data['list_user'] = DB::table('users')->where('id','=', $id)->get();
         return view('User.edit', $data);
     }
     public function edits(Request $req)
@@ -47,7 +51,9 @@ class create_usercontroller extends Controller
         $user->lastname= $req->lastname;
         $user->middlename= $req->middlename;
         $user->address= $req->address;
-        $user->salary= $req->salary;
+        $user->position= $req->position;
+        $user->username= $req->username;
+        $user->password= $req->password;
         $user->update();
          return redirect('/User');
     }

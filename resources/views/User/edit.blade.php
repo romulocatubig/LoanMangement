@@ -13,37 +13,58 @@
                       @foreach($list_user as $users)
                        <div class="form-group">
                             <div class="col-md-6">
-                                 <input class="form-control" type="hidden" name="id" value="{{$users->id}}" placeholder="id">
+                                 <input class="form-control" type="hidden" name="id" value="{{$users->id}}" placeholder="id" required>
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="id " class="col-md-4 control-label">First Name</label>
                             <div class="col-md-6">
-                                  <input class="form-control" type="text" name="firstname" value="{{$users->firstname}}" placeholder="firstname">
+                                  <input class="form-control" type="text" name="firstname" value="{{$users->firstname}}" placeholder="firstname" required>
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="id " class="col-md-4 control-label">Last Name</label>
                             <div class="col-md-6">
-                                   <input class="form-control" type="text" name="lastname" value="{{$users->lastname}}" placeholder="lastname">
+                                   <input class="form-control" type="text" name="lastname" value="{{$users->lastname}}" placeholder="lastname" required>
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="id " class="col-md-4 control-label">Middle Name</label>
                             <div class="col-md-6">
-                                   <input class="form-control" type="text" name="middlename" value="{{$users->middlename}}" placeholder="middlename">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="id " class="col-md-4 control-label">Address</label>
-                            <div class="col-md-6">
-                                   <input class="form-control" type="text" name="address" value="{{$users->Address}}" placeholder="address">
+                                   <input class="form-control" type="text" name="middlename" value="{{$users->middlename}}" placeholder="middlename" required>
                             </div>
                         </div>
                          <div class="form-group">
-                            <label for="id " class="col-md-4 control-label">Salary</label>
+                            <label for="id " class="col-md-4 control-label">Address</label>
                             <div class="col-md-6">
-                                   <input class="form-control" type="text" name="salary" placeholder="Salary">
+                                <input class="form-control" type="text" name="address" placeholder="address" value="{{$users->address}}"s required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="id " class="col-md-4 control-label">Position</label>
+                            <div class="col-md-6">
+                               <select class="form-control" name="position">
+                                @if($users->position=="Admin")
+                                    <option value="Admin">Admin</option>
+                                    <option value="Collector">Collector</option>
+                                @else
+                                    <option value="Collector">Collector</option>
+                                    <option value="Admin">Admin</option>
+                                @endif
+                               </select>
+                        </select>
+                            </div>
+                        </div>
+                         <div class="form-group">
+                            <label for="id " class="col-md-4 control-label">User Name</label>
+                            <div class="col-md-6">
+                                <input class="form-control" type="text" name="username" placeholder="username" value="{{$users->username}}" required>
+                            </div>
+                        </div>
+                         <div class="form-group">
+                            <label for="id " class="col-md-4 control-label">Password</label>
+                            <div class="col-md-6">
+                                <input class="form-control" type="password" name="password" placeholder="password" value="{{$users->password}}" required>
                             </div>
                         </div>
                         <div class="form-group">

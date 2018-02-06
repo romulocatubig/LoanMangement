@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use Auth;
 
 class HomeController extends Controller
 {
@@ -28,15 +29,33 @@ class HomeController extends Controller
     }
     public function login(Request $req)
     {
-        die(var_dump($req->username));
-        $account = User::All()->get();
-        if($account->username == $req->username && $account->password == $req->paassword && $account->status == "Active")
-        {
-            return view('User');    
+        $account = User::All();
+        foreach ($account as $a) {
+            if($a->username == $req->username && $a->password == $req->password)
+            {
+                if($a->username == $req->username && $a->password == $req->password && $a->status == "Active")
+                {
+                    return redirect('/User');    
+                }
+                else
+                {
+                     return redirect(route('login'))->with('errors_msg', 'Deactivated Account');
+                }
+            }
+            else
+            {
+                return redirect(route('login'))->with('errors_msg', 'Invalid User or password');
+            }
         }
-        else
-        {
-            return view(route('login'));
-        }
+
+        // if(Auth::User(['username' => $req->username, 'password' => $req->password]))
+        // {
+        //     return redirect('/User');    
+        // }
+        // else
+        // {
+        //     return redirect(route('login'))->with('errors_msg', 'Invalid User or password');
+        // }
+        
     }
 }

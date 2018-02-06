@@ -27,25 +27,25 @@
                         <div class="form-group">
                             <label for="id " class="col-md-4 control-label">First Name</label>
                             <div class="col-md-6">
-                                  <input class="form-control" type="text" name="firstname" placeholder="firstname">
+                                <input class="form-control" type="text" name="firstname" placeholder="firstname" required>
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="id " class="col-md-4 control-label">Last Name</label>
                             <div class="col-md-6">
-                                   <input class="form-control" type="text" name="lastname" placeholder="lastname">
+                                <input class="form-control" type="text" name="lastname" placeholder="lastname" required>
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="id " class="col-md-4 control-label">Middle Name</label>
                             <div class="col-md-6">
-                                   <input class="form-control" type="text" name="middlename" placeholder="middlename">
+                                <input class="form-control" type="text" name="middlename" placeholder="middlename" required>
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="id " class="col-md-4 control-label">Address</label>
                             <div class="col-md-6">
-                                   <input class="form-control" type="text" name="address" placeholder="address">
+                                <input class="form-control" type="text" name="address" placeholder="address" required>
                             </div>
                         </div>
                         <div class="form-group">
@@ -61,13 +61,13 @@
                          <div class="form-group">
                             <label for="id " class="col-md-4 control-label">User Name</label>
                             <div class="col-md-6">
-                                   <input class="form-control" type="text" name="username" placeholder="username">
+                                <input class="form-control" type="text" name="username" placeholder="username" required>
                             </div>
                         </div>
                          <div class="form-group">
                             <label for="id " class="col-md-4 control-label">Password</label>
                             <div class="col-md-6">
-                                   <input class="form-control" type="password" name="password" placeholder="password">
+                                <input class="form-control" type="password" name="password" placeholder="password" required>
                             </div>
                         </div>
                         <div class="form-group">

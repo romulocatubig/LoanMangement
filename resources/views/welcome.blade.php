@@ -79,7 +79,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Laravel
+                    Loan Management <p> System</p>
                 </div>
 
                 <div class="links">

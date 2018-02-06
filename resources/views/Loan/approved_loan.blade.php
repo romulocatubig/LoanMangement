@@ -22,7 +22,7 @@
                         </tr>
                         @foreach($list_loan as $loans)
                         <tr>
-                          @if($loans->status=="Approved")
+                          @if($loans->status=="Approved" or $loans->status=="CancelApproved")
                               <td>{{number_format($loans->loan_amount,2)}}</td>
                               <td>{{$loans->date}}</td>
                               <td>{{$loans->firstname}}</td>
@@ -35,34 +35,12 @@
                               </td>
                               <?php $amort = ($loans->loan_amount+($loans->loan_amount*($loans->interest/100)))/$loans->loan_period; ?>
                               <td>
-                                    <a class="btn btn-primary"  data-toggle="modal" data-target="#myModal-{{$loans->id}}">Pay</a>
-                                    <div id="myModal-{{$loans->id}}" class="modal fade" role="dialog">
-                                      <div class="modal-dialog modal-sm">
-                                        <div class="modal-content">
-                                          <div class="modal-header">
-                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                            <h4 class="modal-title">Payment</h4>
-                                          </div>
-                                          <form class="form-horizontal" method="post" action="{{url('/Schedule/Create/')}}">
-                                            {{csrf_field()}}
-                                          <div class="modal-body">
-                                            
-                                              <div class="form-group">
-                                                <div class="col-md-12">
-                                                  <input type="hidden" name="loan_id" value="{{$loans->id}}">
-                                                  <input class="form-control" type="text" name="payment" value="{{$amort}}" placeholder="Payment">
-                                                </div>
-                                              </div>
-                                          </div>
-                                          <div class="modal-footer">
-                                              <input type="submit" name="btnsubmit" value="pay" class="btn btn-primary">
-                                         {{--  <a class="btn btn-warning" href="{{url('/Loan')}}">Cancel</a> --}}
-                                          </div>
-                                          </form>
-                                        </div>
-                                      </div>
-                                    </div>
-                                    <a class="btn btn-info" href="{{url('/Schedule/'.$loans->id)}}">View Payment</a>
+                                @if($loans->status!="CancelApproved")
+                                  <a class="btn btn-danger" href="{{url('/Loan/Cancelled/' .$loans->id)}}">Cancel</a>
+                                  <a class="btn btn-primary" href="{{url('/Loan/Started/'.$loans->id)}}">Start</a>
+                                @else
+                                  <a class="btn btn-warning" href="{{url('/Loan/Uncancelled/' .$loans->id)}}">Uncancel</a>
+                                @endif
                               </td>
                            @endif
                         </tr>

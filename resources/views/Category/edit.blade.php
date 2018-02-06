@@ -13,31 +13,31 @@
                      @foreach($list_category as $categoryloans)
                        <div class="form-group">
                             <div class="col-md-6">
-                                <input class="" type="hidden" name="id" value="{{$categoryloans->id}}" placeholder="id">
+                                <input class="" type="hidden" name="id" value="{{$categoryloans->id}}" placeholder="id" required>
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="id " class="col-md-4 control-label">loan Type</label>
                             <div class="col-md-6">
-                                  <input class="form-control" type="text" name="loantype" value="{{$categoryloans->loantype}}">
+                                  <input class="form-control" type="text" name="loantype" value="{{$categoryloans->loantype}}" required>
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="id " class="col-md-4 control-label">Interest</label>
                             <div class="col-md-6">
-                                  <input class="form-control" type="number" name="interest" value="{{$categoryloans->interest}}" >
+                                  <input class="form-control" type="number" name="interest" value="{{$categoryloans->interest}}" required>
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="id " class="col-md-4 control-label">Minimum</label>
                             <div class="col-md-6">
-                                  <input class="form-control" type="number" name="min" value="{{$categoryloans->minimum_loan}}" >
+                                  <input class="form-control" type="number" name="min" value="{{$categoryloans->minimum_loan}}" required>
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="id " class="col-md-4 control-label">Maximum</label>
                             <div class="col-md-6">
-                                   <input class="form-control" type="number" name="max" value="{{$categoryloans->maximum_loan}}" >
+                                   <input class="form-control" type="number" name="max" value="{{$categoryloans->maximum_loan}}" required>
                             </div>
                         </div>
                         <div class="form-group">

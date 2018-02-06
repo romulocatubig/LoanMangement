@@ -12,7 +12,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-
+				</div>
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
 		   			<ul class="nav navbar-nav navbar-header">
 		   			<li><a href="{{url('/User')}}">Users</a></li>
@@ -29,9 +29,12 @@
 		   				</ul>
 		   			</li>
 		   			</ul>
-		   		</div>
+		   			<ul class="nav navbar-nav navbar-right">
+		   					<li><a href="{{url('/')}}">Logout</a></li>
+		   			</ul>
 		   		</div>
 		   	</div>
+		   	
 		 </nav>
 <div class="container">
     <div class="row">
@@ -41,6 +44,7 @@
 		  		{{-- <li><a href="{{url('/Loan/Create')}}">Create New Loan</a></li> --}}
 		   		<li><a href="{{url('/Loan')}}">Pending / Cancel</a></li>
 		   		<li><a href="{{url('/Loan/Approved')}}">Approved</a></li>
+		   		<li><a href="{{url('/Loan/Start')}}">Start</a></li>
 		   		<li><a href="{{url('/Loan/Paid')}}">Paid</a></li>
 				<li><a href="{{url('/Loan/Rejected')}}">Rejected</a></li>
 		   	</ul>

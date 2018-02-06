@@ -13,31 +13,31 @@
                     {{csrf_field()}}
                        <div class="form-group">
                             <div class="col-md-6">
-                                <input class="form-control" type="hidden" name="id" placeholder="id">
+                                <input class="form-control" type="hidden" name="id" placeholder="id" required>
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="id " class="col-md-4 control-label">loan Type</label>
                             <div class="col-md-6">
-                                  <input class="form-control" type="text" name="loantype">
+                                  <input class="form-control" type="text" name="loantype" required>
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="id " class="col-md-4 control-label">Interest</label>
                             <div class="col-md-6">
-                                  <input class="form-control" type="number" name="interest">
+                                  <input class="form-control" type="number" name="interest" required>
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="id " class="col-md-4 control-label">Minimum</label>
                             <div class="col-md-6">
-                                  <input class="form-control" type="number" name="min">
+                                  <input class="form-control" type="number" name="min" required>
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="id " class="col-md-4 control-label">Maximum</label>
                             <div class="col-md-6">
-                                   <input class="form-control" type="number" name="max" >
+                                   <input class="form-control" type="number" name="max" required>
                             </div>
                         </div>
                         <div class="form-group">

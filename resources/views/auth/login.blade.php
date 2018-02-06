@@ -24,31 +24,20 @@
                                 @endif
                             </div>
                         </div> --}}
-                        <div class="form-group{{ $errors->has('username') ? ' has-error' : '' }}">
+                        <div class="form-group">
                             <label for="password" class="col-md-4 control-label">Username</label>
 
                             <div class="col-md-6">
                                 <input id="password" type="text" class="form-control" name="username" required>
-
-                                @if ($errors->has('username'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
-                                @endif
                             </div>
                         </div>
 
-                        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
+                        <div class="form-group">
                             <label for="password" class="col-md-4 control-label">Password</label>
 
                             <div class="col-md-6">
                                 <input id="password" type="password" class="form-control" name="password" required>
 
-                                @if ($errors->has('password'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
-                                @endif
                             </div>
                         </div>
 
@@ -73,6 +62,9 @@
                                 </a>
                             </div>
                         </div>
+                         @if(session('errors_msg'))
+                            <p class="alert alert-info text-right">{{session('errors_msg')}}</p>
+                         @endif
                     </form>
                 </div>
             </div>

@@ -13,14 +13,14 @@ class ScheduleController extends Controller
 {
     public function index($id)
     {
-        $list_sched = Schedule::getsched($id);
-        $list_loans = Schedule::getloan($id);
-        return view('Schedule.index', compact('list_sched'), compact('list_loans'));
+        $data['list_sched'] = Schedule::getsched($id);
+        $data['list_loans'] = Schedule::getloan($id);
+        return view('Schedule.index', $data);
     }
     public function create($id)
     {
-    	$list_loans = Schedule::getloan($id);
-        return view('Schedule.create', compact('list_loans'));
+    	$data['list_loans'] = Schedule::getloan($id);
+        return view('Schedule.create', $data);
     }
     public function creates(Request $req)
     {

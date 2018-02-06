@@ -13,37 +13,37 @@
                         <div class="form-group">
                             <label for="id " class="col-md-4 control-label">First Name</label>
                             <div class="col-md-6">
-                                  <input class="form-control" type="text" name="firstname" placeholder="firstname">
+                                  <input class="form-control" type="text" name="firstname" placeholder="firstname" required>
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="id " class="col-md-4 control-label">Last Name</label>
                             <div class="col-md-6">
-                                   <input class="form-control" type="text" name="lastname" placeholder="lastname">
+                                   <input class="form-control" type="text" name="lastname" placeholder="lastname" required>
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="id " class="col-md-4 control-label">Middle Name</label>
                             <div class="col-md-6">
-                                   <input class="form-control" type="text" name="middlename" placeholder="middlename">
+                                   <input class="form-control" type="text" name="middlename" placeholder="middlename" required>
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="id " class="col-md-4 control-label">Address</label>
                             <div class="col-md-6">
-                                   <input class="form-control" type="text" name="address" placeholder="address">
+                                   <input class="form-control" type="text" name="address" placeholder="address" required>
                             </div>
                         </div>
                          <div class="form-group">
                             <label for="id " class="col-md-4 control-label">Contact</label>
                             <div class="col-md-6">
-                                   <input class="form-control" type="text" name="contact" placeholder="contact">
+                                   <input class="form-control" type="text" name="contact" placeholder="contact" required>
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="id " class="col-md-4 control-label">Salary</label>
                             <div class="col-md-6">
-                                   <input class="form-control" type="text" name="salary" placeholder="salary">
+                                   <input class="form-control" type="text" name="salary" placeholder="salary" required>
                             </div>
                         </div>
                         <div class="form-group">

@@ -12,6 +12,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
+		   		</div>
                     <div class="collapse navbar-collapse" id="app-navbar-collapse">
 		   			<ul class="nav navbar-nav navbar-header">
 		   			<li><a href="{{url('/User')}}">Users</a></li>
@@ -28,7 +29,9 @@
 		   				</ul>
 		   			</li>
 		   			</ul>
-		   		</div>
+		   			<ul class="nav navbar-nav navbar-right">
+		   					<li><a href="{{url('/')}}">Logout</a></li>
+		   			</ul>
 		   		</div>
 		   	</div>
 		 </nav>		
