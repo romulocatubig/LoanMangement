@@ -55,7 +55,6 @@
                                     <option value="Admin">Admin</option>
                                     <option value="Collector">Collector</option>
                                </select>
-                        </select>
                             </div>
                         </div>
                          <div class="form-group">

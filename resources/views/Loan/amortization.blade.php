@@ -60,8 +60,8 @@
                         </div> 
                     @endforeach
                 </div>
-                <div class="col-md-6">
-                    <table class="table">
+                <div class="col-md-4">
+                    <table class="table table-hover">
                         <tr>
                             <th>
                                Date Amortazation
@@ -81,7 +81,6 @@
                                 @endif 
                                 <?php $dateObj   = DateTime::createFromFormat('!m', $m);?>
                                 <?php $monthName = $dateObj->format('F');?>
-                                <tbody>
                                     <tr>
                                         <td>
                                             {{$monthName}} {{$d}} {{$y}}
@@ -91,35 +90,41 @@
                                             ₱ {{number_format($amort,2)}} 
                                         </td>
                                     </tr>
-                                </tbody>
                             @endfor
                         @endforeach
-                        <tr class="footer">
-                            <th></th>
-                            <th><strong>P {{number_format($total,2)}}</strong></th>
+                        <tr class="footer" style="background-color: #111111;color:white">
+                            <th>Total</th>
+                            <th><strong>₱ {{number_format($total,2)}}</strong></th>
                         </tr>
                     </table>
                 </div>
-                <div class="col-md-6">
-                    <table class="table">
+                <div class="col-md-8">
+                    <table class="table table-hover">
                         <tr>
-                            <th>
-                               Date Amortazation
-                            </th>
-                            <th>
-                                Amortazation Amount
-                            </th>
+                            <th>Date Payment </th>
+                            <th>Payment Amount </th>
+                            <th>Principle</th>
+                            <th>Interest</th>
+                            <th>Ending Balance</th>
                         </tr>
+                         <?php $total_payment=0; ?>
                         @foreach($payment as $p)
+                        <?php $total_payment+=$p->payment; ?>
                         <tr>
-                            <td>
-                                {{date('F d Y', strtotime($p->payment_date))}}
-                            </td>
-                            <td>
-                                ₱ {{number_format($p->payment,2)}} 
-                            </td>
+                            <td>{{date('F d Y', strtotime($p->payment_date))}}</td>
+                            <td>₱ {{number_format($p->payment,2)}}</td>
+                            <td>₱ {{number_format(($p->principle),2)}}</td>
+                            <td>₱ {{number_format(($p->payment - $p->principle), 2)}}</td>
+                            <td>₱ {{number_format(($p->balance), 2)}}</td>
                         </tr>
                         @endforeach
+                        <tr  class="footer" style="background-color: #111111;color:white">
+                            <th>Total</th>
+                            <th>₱ {{number_format($total_payment,2)}}</th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                        </tr>
                     </table>
                 </div>
                 </div>

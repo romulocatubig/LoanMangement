@@ -46,14 +46,14 @@ class LoanController extends Controller
         $data['categories'] = categoryloan::where('status', '=', "Enable")->get();
         if($req->all())
         {
-            $list_loans = DB::table('categoryloans')->where('id','=', $req->cat_id)->first();
-            $loans = loan::where('member_id', '=', $req->$id)->get();
             $count=0;
+            $list_loans = DB::table('categoryloans')->where('id','=', $req->cat_id)->first();
+            $loans = loan::where('member_id','=',$id)->get();
             foreach ($loans as $l) 
             {
-                if($l->status!="Paid")
+                if($l->status !="Paid")
                 {
-                    $count++;
+                     $count+=1;
                 }
             }
             if($count==0)
@@ -84,13 +84,13 @@ class LoanController extends Controller
                 else
                 {
                     return redirect('/Loan/Create/'.$id)
-                    ->with('errors', 'The Loan range : min = '.number_format($list_loans->minimum_loan,2).' to max = '. number_format($list_loans->maximum_loan,2));
+                    ->with('errors', 'The Loan range for '. $list_loans->loantype .': min = ₱ ' .number_format($list_loans->minimum_loan,2).' to max = ₱ '. number_format($list_loans->maximum_loan,2));
                 }
                 }
                 else
                 {
                      return redirect('/Loan/Create/'.$id)
-                    ->with('errors', 'The Range Loan per Member : Minimum = '.number_format((($salary->salary * .10)*$req->loan_period),2).' to Maximum = '. number_format((($salary->salary * .20)*$req->loan_period),2).' within '.$req->loan_period. ' month');
+                    ->with('errors', 'The Range Loan for this member : Minimum = ₱ '.number_format((($salary->salary * .10)*$req->loan_period),2).' to Maximum = ₱ '. number_format((($salary->salary * .20)*$req->loan_period),2).' within '.$req->loan_period. ' month');
                 }
             }
             else

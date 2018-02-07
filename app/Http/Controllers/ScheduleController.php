@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Schedule;
 use App\loan;
 use App\User;
+use App\categoryloan;
 use DB;
 use Session;
 
@@ -27,22 +28,32 @@ class ScheduleController extends Controller
         $payment=0;
         $validate=0;
         $count=0;
+        $balance=0;
+        $temp_balance=0;
     	// $loan = Schedule::where('id', '=', $req->loan_id)->get();
     	$loans = Schedule::getsched($req->loan_id);
         $loan = Schedule::getloan($req->loan_id);
         foreach ($loans as $l) {
             $payment += $l->principle;
-            $validate = $l->balance;
+            $validate += $l->payment;
             $count++;
+            $temp_balance=$l->balance;
         }
+        $total_amount = $loan[0]->loan_amount+($loan[0]->loan_amount * ($loan[0]->interest / 100));
+        
         if($count==0)
         {
-            $validate = $loan[0]->loan_amount;
+            $temp_balance = $total_amount-$req['payment'];
         }
-        if($validate >= ($req['payment'] - ($req['payment'] * ($loan[0]->interest / 100))))
+        else
         {
-    	$principle = ($req['payment'] - ($req['payment'] * ($loan[0]->interest / 100 )));
-    	$balance = (($loan[0]->loan_amount-$payment) - ($req['payment'] - ($req['payment'] * ($loan[0]->interest  / 100))));
+            $temp_balance-=$req['payment'];
+        }
+        if(($total_amount - $validate) >= $req['payment'])
+        {
+    	$interest = (($req['payment'] - ($req['payment'] * ($loan[0]->interest / 100 ))));
+        $principle = ($req['payment'] - ($interest * ($loan[0]->interest / 100 )));
+    	$balance =  $temp_balance;
     	$sched = new Schedule();
     	$sched->payment= $req->payment;
     	$sched->payment_date = date('Y-m-d H:i:s');
@@ -50,14 +61,22 @@ class ScheduleController extends Controller
     	$sched->balance= $balance;
     	$sched->loan_id= $req->loan_id;
     	$sched->save();
+        $validate += $req->payment;
+        if(($total_amount - $validate)==0)
+        {
+            $loan = loan::find($req->loan_id);
+            $loan->status= "Paid";
+            $loan->update();
+            return redirect('/Loan/Paid');
+        }
         return redirect('/Schedule/'.$req->loan_id);
         }
         else
         {
             Session::flash('message', 'Your Current Balance is : P');
             Session::flash('alert', $validate);
-            $list_loans = Schedule::getloan($req->loan_id);
-            return view('Schedule.create', compact('list_loans'));
+            $data['list_loans'] = Schedule::getloan($req->loan_id);
+            return view('Schedule.index', $data);
         }
     }
     public function scheme(Request $req)
@@ -70,9 +89,11 @@ class ScheduleController extends Controller
         }
         else
         {
-            $list_users = User::All();
-            $list_payment = Schedule::scheme();
-            return view('Schedule.monthlyscheme', compact('list_payment'), compact('list_users'));
+            $data['list_users'] = User::All();
+            $data['list_payment'] = Schedule::scheme();
+            $data['loans'] = loan::All();
+            $data['category'] = categoryloan::All();
+            return view('Schedule.monthlyscheme', $data);
         }
        
     }

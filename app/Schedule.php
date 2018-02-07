@@ -43,7 +43,7 @@ class Schedule extends Model
             ->leftJoin('loans as l', 's.loan_id', '=' , 'l.id')
             ->leftJoin('members as m', 'l.member_id', '=' , 'm.id')
             ->leftJoin('categoryloans as c', 'l.category_id', '=', 'c.id')
-            ->select('s.*','l.loan_amount', 'm.firstname','m.lastname','m.middlename', 'c.loantype', 'c.interest')
+            ->select('s.*', 'l.interest','l.loan_amount', 'm.firstname','m.lastname','m.middlename', 'c.loantype')
             ->where('l.id', '=', $id)
             ->get();
             
@@ -53,9 +53,9 @@ class Schedule extends Model
     {
             $list_sched = DB::table('schedules as s')
             ->leftJoin('loans as l', 's.loan_id', '=' , 'l.id')
-            ->leftJoin('users as u', 'l.user_id', '=' , 'u.id')
+            ->leftJoin('members as m', 'l.member_id', '=' , 'm.id')
             ->leftJoin('categoryloans as c', 'l.category_id', '=', 'c.id')
-            ->select('s.*','l.loan_amount', 'u.firstname','u.lastname','u.middlename', 'c.loantype', 'c.interest')
+            ->select('s.*', 'l.interest','l.loan_amount', 'm.firstname','m.lastname','m.middlename', 'c.loantype','l.category_id')
             ->get();
         return $list_sched;
     }

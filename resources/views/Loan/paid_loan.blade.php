@@ -10,14 +10,14 @@
                 <div class="panel-body">
                   <table class="table">
                         <tr>
-                              <td>Loan Amount</td>
-                              <td>Date Loan</td>
-                              <td>Name</td>
-                              <td>Type Loan</td>
-                              <td>Loan Period(months)</td>
-                              <td>Interest</td>
-                              <td>Status</td>
-                              <td>Action</td>
+                              <th>Loan Amount</th>
+                              <th>Date Loan</th>
+                              <th>Name</th>
+                              <th>Type Loan</th>
+                              <th>Loan Period(months)</th>
+                              <th>Interest</th>
+                              <th>Status</th>
+                              <th>Amortization</th>
                         </tr>
                         @foreach($list_loan as $loans)
                         <tr>
@@ -30,9 +30,7 @@
                               <td>{{$loans->interest}} %</td>
                               <td>{{$loans->status}}</td>
                               <td>
-                                    <a class="btn btn-primary" href="#">Approve</a>
-                                    <a class="btn btn-warning" href="#">Cancel</a>
-                                    <a class="btn btn-danger" href="#">Reject</a>
+                                 <a class="btn btn-info" href="{{url('/Loan/Amortization/' .$loans->id)}}">Show</a>
                               </td>
                            @endif
                         </tr>

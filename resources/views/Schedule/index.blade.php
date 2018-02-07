@@ -24,9 +24,19 @@
                               {{csrf_field()}}
                               <div class="modal-body">
                                 <div class="form-group">
-                                  <div class="col-md-12">
+                                    <label for="id " class="col-md-4 control-label">Choose</label>
+                                        <div class="col-md-8">
+                                            <select class="form-control" name="status" id="stat" onchange="jsFunction()">
+                                                <option value="{{(number_format($amort,2,'.',''))}}">Monthly</option>
+                                                <option value="{{(number_format($amort*2,2,'.',''))}}">Bi-Montly</option>
+                                            </select>
+                                        </div>
+                                </div>
+                                <div class="form-group">
+                                  <label for="id " class="col-md-4 control-label">Payment</label>
+                                  <div class="col-md-8">
                                     <input type="hidden" name="loan_id" value="{{$schedules->id}}">
-                                    <input class="form-control" type="text" name="payment" value="{{$amort}}" placeholder="Payment">
+                                    <input class="form-control" type="text" name="payment" id="pay" value="{{(number_format($amort,2,'.',''))}}" placeholder="Payment">
                                   </div>
                                  </div>
                               </div>
@@ -86,7 +96,9 @@
                             </div>
                         </div> 
                     @endforeach
-                
+                 @if(Session::has('message'))
+                    <p class="alert alert-info text-right">{{ Session::get('message') }} {{ Session::get('alert') }}</p>
+                @endif
                  <table class="table">
                         <tr>
                               <th>Beginning Balance</th>
@@ -98,7 +110,7 @@
                         </tr>
                         @foreach($list_sched as $schedules)
                         <tr>
-                              <td>₱ {{number_format(($schedules->principle + $schedules->balance),2)}}</td>
+                              <td>₱ {{number_format(($schedules->payment)+($schedules->balance),2)}}</td>
                               <td>₱ {{number_format(($schedules->payment),2)}}</td>
                               <td>₱ {{number_format(($schedules->principle),2)}}</td>
                               <td>₱ {{number_format(($schedules->payment - $schedules->principle), 2)}}</td>
@@ -114,5 +126,14 @@
     </div>
 </div>
 @endsection
-
-
+<script type="text/javascript">
+  function jsFunction(){
+   var dropdown1 = document.getElementById('stat');
+   var textbox = document.getElementById('pay');
+   if(dropdown1.selectedIndex == 0){
+     textbox.value = dropdown1.value;
+   } else if(dropdown1.selectedIndex == 1) {
+     textbox.value = dropdown1.value;
+   }
+   }
+</script>
