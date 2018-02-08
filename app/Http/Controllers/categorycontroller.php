@@ -8,6 +8,10 @@ use DB;
 
 class categorycontroller extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function index()
     {
     	$list_category = categoryloan::All();

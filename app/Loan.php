@@ -35,5 +35,25 @@ class loan extends Model
         ->get();
         return $list_loan;
     }
+     public static function get_loan_permember($id)
+    {
+        $list_loan = DB::table('loans as l')
+        ->select('l.*', 'u.firstname','u.middlename', 'u.lastname','c.loantype', 'c.maximum_loan' , 'c.minimum_loan')
+        ->leftJoin('members as u', 'l.member_id', '=' , 'u.id')
+        ->leftJoin('categoryloans as c', 'l.category_id', '=', 'c.id')
+        ->where('l.member_id','=',$id)
+        ->get();
+        return $list_loan;
+    }
+    public static function search_loan($year)
+    {
+        $list_loan = DB::table('loans as l')
+        ->select('l.*', 'u.firstname', 'c.loantype', 'c.maximum_loan' , 'c.minimum_loan')
+        ->leftJoin('members as u', 'l.member_id', '=' , 'u.id')
+        ->leftJoin('categoryloans as c', 'l.category_id', '=', 'c.id')
+        ->whereYear('l.date', '=', $year)
+        ->get();
+        return $list_loan;
+    }
 }
 

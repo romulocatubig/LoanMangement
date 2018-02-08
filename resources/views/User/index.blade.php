@@ -5,10 +5,13 @@
     <div class="row">
         <div class="col-md-12">
             <div class="panel panel-default">
-                <div style="background-color:lightblue" class="panel-heading">User Index</div>
 
+                <div style="background-color:lightblue" class="panel-heading">User Index</div>
                 <div class="panel-body">
-                  <a class="btn btn-info" href="{{url('/User/Create')}}">Create New User</a>
+                  <a class="btn btn-primary" href="{{url('/User/Create')}}">Create New User</a>
+                </div>  
+                <div class="panel-body">
+                 
                   <table class="table">
                         <tr>
                               <th>First Name</th>
@@ -19,6 +22,7 @@
                               <th>Username</th>
                               {{-- <th>Password</th> --}}
                               <th>Status</th>
+                              <th>Action</th>
                         </tr>
                   @foreach($list_user as $users)
                         <tr>

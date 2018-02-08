@@ -18,7 +18,7 @@ window.onload = function () {
               @foreach($list_user as $user)
                <?php $count = 0; ?>
                     @foreach($list_loan as $loan)
-                        @if($loan->user_id == $user->id)
+                        @if($loan->member_id == $user->id)
                             <?php $count += $loan->loan_amount; ?>
                         @endif
                     @endforeach

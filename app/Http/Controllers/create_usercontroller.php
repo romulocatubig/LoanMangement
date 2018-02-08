@@ -5,16 +5,18 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use DB;
+use Auth;
 
 class create_usercontroller extends Controller
 {
-    // public function __construct()
-    // {
-    //     $this->middleware('auth');
-    // }
+   
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function index()
     {
-    	$data['list_user'] = User::All();
+        $data['list_user'] = User::All();
         return view('User.index', $data);
     }
     public function create(Request $req)
@@ -28,7 +30,7 @@ class create_usercontroller extends Controller
         $user->address= $req->address;
         $user->position= $req->position;
         $user->username= $req->username;
-        $user->password= $req->password;
+        $user->password= bcrypt($req->password);
         $user->status= "Active";
         $user->save();
         return redirect('/User');
@@ -53,7 +55,14 @@ class create_usercontroller extends Controller
         $user->address= $req->address;
         $user->position= $req->position;
         $user->username= $req->username;
-        $user->password= $req->password;
+        if($user->password==$req->password)
+        {
+            $user->password = $req->password;
+        }
+        else
+        { 
+            $user->password = bcrypt($req->password);
+        }
         $user->update();
          return redirect('/User');
     }

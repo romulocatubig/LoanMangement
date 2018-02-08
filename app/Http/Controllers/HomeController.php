@@ -13,10 +13,10 @@ class HomeController extends Controller
      *
      * @return void
      */
-    // public function __construct()
-    // {
-    //     $this->middleware('auth');
-    // }
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
 
     /**
      * Show the application dashboard.
@@ -25,7 +25,15 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        if(auth::user()->status!="Active")
+        {
+            auth()->logout();
+            return back()->with('errors', 'Your acount is Deactivated');;
+        }
+        else
+        {
+            return view('home');
+        }
     }
     public function login(Request $req)
     {
@@ -47,15 +55,5 @@ class HomeController extends Controller
                 return redirect(route('login'))->with('errors_msg', 'Invalid User or password');
             }
         }
-
-        // if(Auth::User(['username' => $req->username, 'password' => $req->password]))
-        // {
-        //     return redirect('/User');    
-        // }
-        // else
-        // {
-        //     return redirect(route('login'))->with('errors_msg', 'Invalid User or password');
-        // }
-        
     }
 }

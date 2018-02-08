@@ -12,6 +12,10 @@ use Session;
 
 class ScheduleController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function index($id)
     {
         $data['list_sched'] = Schedule::getsched($id);
@@ -83,9 +87,11 @@ class ScheduleController extends Controller
     {
         if($req->all())
         {
-            $list_users = User::All();
-            $list_payment = Schedule::schemes($req->user_id, $req->year);
-            return view('Schedule.monthlyscheme', compact('list_payment'), compact('list_users'));
+            $data['list_users'] = User::All();
+            $data['list_payment'] = Schedule::schemes($req->year);
+            $data['loans'] = loan::search_loan($req->year);
+            $data['category'] = categoryloan::All();
+            return view('Schedule.monthlyscheme', $data);
         }
         else
         {

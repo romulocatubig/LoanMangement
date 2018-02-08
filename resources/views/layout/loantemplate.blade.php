@@ -15,9 +15,13 @@
 				</div>
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
 		   			<ul class="nav navbar-nav navbar-header">
-		   			<li><a href="{{url('/User')}}">Users</a></li>
-		   			<li><a href="{{url('/Member')}}">Members</a></li>
-		   			<li><a href="{{url('/Category')}}">Categories</a></li>
+		   			@if(Auth::user()->position == "Admin")
+					<li><a href="{{url('/User')}}">Users</a></li>
+					<li><a href="{{url('/Member')}}">Members</a></li>
+					<li><a href="{{url('/Category')}}">Categories</a></li>
+					@else
+					<li><a href="{{url('/Member')}}">Members</a></li>
+					@endif
 		   			<li><a href="{{url('/Loan')}}">Loans</a></li>
 		   			<li><a href="{{url('/Scheme')}}">Reports</a></li>
 		   			<li class="dropdown">
@@ -30,11 +34,18 @@
 		   			</li>
 		   			</ul>
 		   			<ul class="nav navbar-nav navbar-right">
-		   					<li><a href="{{url('/')}}">Logout</a></li>
+		   				<li><a href="home">Hi : {{Auth::user()->firstname}} the {{Auth::user()->position}}</a></li>
+		   				<li><a href="{{ route('logout') }}"
+		   					onclick="event.preventDefault();
+		   					document.getElementById('logout-form').submit();">
+		   					Logout
+		   				</a>
+		   				<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+		   					{{ csrf_field() }}
+		   				</form></li>
 		   			</ul>
 		   		</div>
 		   	</div>
-		   	
 		 </nav>
 <div class="container">
     <div class="row">
@@ -42,8 +53,10 @@
 		  <div class="panel-heading">
 		  	<ul class="nav navbar-nav navbar-header">
 		  		{{-- <li><a href="{{url('/Loan/Create')}}">Create New Loan</a></li> --}}
-		   		<li><a href="{{url('/Loan')}}">Pending / Cancel</a></li>
+		  		<li><a href="{{url('/Loan')}}">Pending / Cancel</a></li>
+		  		@if(Auth::user()->position == "Admin")
 		   		<li><a href="{{url('/Loan/Approved')}}">Approved</a></li>
+		   		@endif
 		   		<li><a href="{{url('/Loan/Start')}}">Start</a></li>
 		   		<li><a href="{{url('/Loan/Paid')}}">Paid</a></li>
 				<li><a href="{{url('/Loan/Rejected')}}">Rejected</a></li>

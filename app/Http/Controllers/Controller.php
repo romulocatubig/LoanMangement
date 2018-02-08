@@ -7,6 +7,7 @@ use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use App\User;
+use App\Member;
 use App\loan;
 use App\Schedule;
 use App\categoryloan;
@@ -38,7 +39,7 @@ class Controller extends BaseController
     }
     public function users()
     {
-        $list_user = User::All();
+        $list_user = Member::All();
         $list_loan = loan::All();
         return view('Charts.UserChart',compact('list_user'),compact('list_loan'));
     }

@@ -49,7 +49,7 @@
                          <div class="form-group">
                             <label for="id " class="col-md-3 control-label text-right">Monthly Payment :</label>
                             <div class="col-md-8">
-                               <label  class="col-md-8 control-label">₱ {{number_format(($schedules->loan_amount + ($schedules->loan_amount * ($schedules->interest / 100)))/($schedules->loan_period), 2, '.', '')}}</label>
+                               <label  class="col-md-8 control-label">₱ {{number_format(($schedules->loan_amount + ($schedules->loan_amount * ($schedules->interest / 100)))/($schedules->loan_period), 2)}}</label>
                             </div>
                         </div>
                         <div class="form-group">

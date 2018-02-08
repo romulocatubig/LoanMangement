@@ -8,10 +8,10 @@
                 <div class="panel-heading">Login</div>
 
                 <div class="panel-body">
-                    <form class="form-horizontal" method="POST" action="{{url('Home/Login')}}">
+                    <form class="form-horizontal" method="POST" action="{{url('login')}}">
                         {{ csrf_field() }}
 
-                       {{--  <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
+                      {{--   <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
                             <label for="email" class="col-md-4 control-label">E-Mail Address</label>
 
                             <div class="col-md-6">
@@ -25,10 +25,10 @@
                             </div>
                         </div> --}}
                         <div class="form-group">
-                            <label for="password" class="col-md-4 control-label">Username</label>
+                            <label for="username" class="col-md-4 control-label">Username</label>
 
                             <div class="col-md-6">
-                                <input id="password" type="text" class="form-control" name="username" required>
+                                <input type="text" autofocus="true" placeholder="Username" value="{{ old('username') }}" name="username" id="username" required class="form-control" />
                             </div>
                         </div>
 
@@ -36,7 +36,7 @@
                             <label for="password" class="col-md-4 control-label">Password</label>
 
                             <div class="col-md-6">
-                                <input id="password" type="password" class="form-control" name="password" required>
+                                <input id="password" type="password" class="form-control" name="password" placeholder="Password" required>
 
                             </div>
                         </div>
@@ -65,6 +65,9 @@
                          @if(session('errors_msg'))
                             <p class="alert alert-info text-right">{{session('errors_msg')}}</p>
                          @endif
+                          @if(session('errors'))
+                      <p class="alert alert-info text-right">{{session('errors')}}</p>
+                    @endif
                     </form>
                 </div>
             </div>

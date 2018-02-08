@@ -16,6 +16,7 @@
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/home/login', 'HomeController@login');
 Route::get('/home', 'HomeController@index')->name('home');
 Route::post('/Home/Login', 'HomeController@login');
 //User
@@ -60,6 +61,7 @@ Route::get('/Loan/Rejected/{id}', 'LoanController@rejected');
 Route::get('/Loan/Cancelled/{id}', 'LoanController@cancelled');
 Route::get('/Loan/Uncancelled/{id}', 'LoanController@uncancelled');
 Route::get('/Loan/Amortization/{id}', 'LoanController@amortization');
+Route::get('/Loan/PerMember/{id}', 'LoanController@loanmember');
 //Schedule Payment
 Route::get('/Schedule/{id}', 'ScheduleController@index');
 Route::get('/Schedule/Create/{id}', 'ScheduleController@create');

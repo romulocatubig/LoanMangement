@@ -13,6 +13,10 @@ use Datetime;
 use Session;
 class LoanController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function index()
     {
     	$data['list_loan'] = loan::getloan();
@@ -127,7 +131,7 @@ class LoanController extends Controller
             }
             if($count==0)
             {
-                $salary = Member::find($id)->first();
+                $salary = Member::find($req->member_id)->first();
                 if(((($salary->salary * .10)*$req->loan_period)<=$req->amount) && ((($salary->salary * .20)*$req->loan_period) >= $req->amount))
                 {
                 if(($list_loans->maximum_loan >= $req->amount) && ($list_loans->minimum_loan <= $req->amount))
@@ -137,7 +141,7 @@ class LoanController extends Controller
                     $loan->date= date('Y-m-d H:i:s');
                     $loan->loan_period= $req->loan_period;
                     $loan->status = "Pending";
-                    $loan->member_id= $id;
+                    $loan->member_id= $req->member_id;
                     $loan->category_id= $req->cat_id;
                     if($req->interest!=null)
                     {
@@ -238,5 +242,11 @@ class LoanController extends Controller
         $data['amortization'] = Schedule::getloan($id);
         $data['payment'] = Schedule::where('loan_id', '=', $id)->get();
         return view('Loan.amortization', $data);
+    }
+    public function loanmember($id)
+    {
+        $data['member'] = member::find($id)->first();
+        $data['loans'] = loan::get_loan_permember($id);
+        return view('Loan.loanmember', $data);
     }
 }

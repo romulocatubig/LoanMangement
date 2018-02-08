@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div style="background-color:lightblue" class="panel-heading">User Create</div>
+                <div style="background-color:lightblue" class="panel-heading">Member Create</div>
 
                 <div class="panel-body">
                     <form class="form-horizontal" method="post" action="{{url('/Member/Create')}}">
@@ -47,11 +47,18 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <div class="col-md-12 navbar-centered">
-                                    <input type="submit" name="btnsubmit" value="Create" class="btn btn-primary">
-                                    <a class="btn btn-warning" href="{{url('/User')}}">Cancel</a>
+                            <label for="id " class="col-md-4 control-label"></label>
+                            <div class="col-md-6">
+                                <div class="input-group">
+                                   <span class="input-group-btn">
+                                      <input type="submit" name="btnsubmit" value="Create" class="btn btn-primary col-md-12">
+                                 </span>
+                                 <span class="input-group-btn">
+                                     <a class="btn btn-warning col-md-12" href="{{url('/Member')}}">Cancel</a>
+                                </span>
                             </div>
                         </div>
+                    </div>
                       </form>
                 </div>
             </div>

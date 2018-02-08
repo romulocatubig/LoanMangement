@@ -53,6 +53,8 @@ window.onload = function () {
                         @endif
                     @endforeach
                     <?php $asa = date('F', strtotime($x)); ?>
+                    <?php $dateObj   = DateTime::createFromFormat('!m', $x);?>
+                    <?php $monthName = $dateObj->format('F');?>
                     { label: {{$x}},  y: {{$count}}  },
                 @endfor
                 ]

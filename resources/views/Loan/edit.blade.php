@@ -22,10 +22,14 @@
                 <div class="form-group">
                     <label for="id " class="col-md-4 control-label">Per month Loan</label>
                       <div class="col-md-6">
-                          <label>Minimum : P {{number_format($member->salary * .10,2)}}</label>
-                      </div>
-                      <div class="col-md-6">
-                          <label>Maximum :P {{number_format($member->salary * .20,2)}}  </label>
+                        <div class="input-group">
+                         <span class="input-group-btn">
+                            <button class="btn btn-secondary" type="button">Minimum : ₱ {{number_format($member->salary * .10,2)}}</button>
+                          </span>
+                        <span class="input-group-btn">
+                            <button class="btn btn-secondary" type="button">Maximum :₱ {{number_format($member->salary * .20,2)}}</button>
+                          </span>
+                        </div>
                       </div>
                 </div>
  		            <div class="form-group">
@@ -48,17 +52,41 @@
                  <div class="form-group">
                     <label for="id " class="col-md-4 control-label">Amount</label>
                       <div class="col-md-6">
-                        <input type="number" class="form-control" name="amount" placeholder="Loan Amount" value="{{$loan->loan_amount}}">
+                        <div class="input-group">
+                          <span class="input-group-btn">
+                            <button class="btn btn-secondary" type="button">₱</button>
+                          </span>
+                       <input type="number" class="form-control" name="amount" placeholder="Loan Amount" value="{{$loan->loan_amount}}">
+                        <span class="input-group-btn">
+                            <button class="btn btn-secondary" type="button">.00</button>
+                          </span>
+                        </div>
                       </div>
                 </div>
-  		          <div class="form-group">
+                <div class="form-group">
                     <label for="id " class="col-md-4 control-label">Loan Period(Monthly)</label>
                       <div class="col-md-6">
-                        <input type="number" class="form-control" name="loan_period" placeholder="Month" value="{{$loan->loan_period}}">
+                        <div class="input-group">
+                         <input type="number" class="form-control" name="loan_period" placeholder="Month" value="{{$loan->loan_period}}">
+                        <span class="input-group-btn">
+                            <button class="btn btn-secondary" type="button">months</button>
+                          </span>
+                        </div>
                       </div>
                 </div>
- 		                <input type="submit" name="btnsubmit" value="Save" class="btn btn-primary">
-                    <a class="btn btn-warning" href="{{url('/Loan')}}">Cancel</a>
+                <div class="form-group">
+                  <label for="id " class="col-md-4 control-label"></label>
+                  <div class="col-md-6">
+                    <div class="input-group">
+                     <span class="input-group-btn">
+                        <input type="submit" name="btnsubmit" value="Save" class="btn btn-primary col-md-12">
+                     </span>
+                     <span class="input-group-btn">
+                      <a class="btn btn-warning col-md-12" href="{{url('/Loan')}}">Cancel</a>
+                    </span>
+                  </div>
+                </div>
+              </div>
                     @if(session('errors'))
                       <p class="alert alert-info text-right">{{session('errors')}}</p>
                     @endif
